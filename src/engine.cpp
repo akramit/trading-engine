@@ -164,10 +164,39 @@ int executeMarketOrder(order od, vector<order>& buyBook, vector<order>& sellBook
     return totalValue;
 }
 
+/*
+* Cancels order from orderbook.
+* Returns void
+*/
+void cancelOrder(vector<order>& buyBook, vector<order>& sellBook, string id){
+    // BuyBook
+    for(int i=0;i<buyBook.size();){
+        if(buyBook[i].id==id){
+            buyBook.erase(buyBook.begin()+i);
+        }
+        else{
+            i++;
+        }
+    }
+    // SellBook
+    for(int i=0;i<sellBook.size();){
+        if(sellBook[i].id==id){
+            sellBook.erase(sellBook.begin()+i);
+        }
+        else{
+            i++;
+        }
+    }
+}
+
 int main(){
 
     vector<order> buyBook;
     vector<order> sellBook;
+    cout<<"Trading Engine started ..."<<endl;
+    cout<<"Operations: \n 1. Submit Order \"SUB LO B qty price id\" "<<endl;
+    cout<<" 2. Cancel Order \"CXL id\" "<<endl;
+    cout<<" 3. Enter \"END\" to stop the engine "<<endl;
 
     do{
         string in;
@@ -190,16 +219,17 @@ int main(){
             }
         }
         else if(input[0]=="CXL"){
-            cout<<"To Do"<<endl;
+            //cout<<"To Do"<<endl;
+            cancelOrder(buyBook,sellBook,input[1]);
         }
         else if(input[0]=="END"){
-            cout<<"End of Program"<<endl;
+            cout<<"Engine Stopped"<<endl;
             break;
         }
     }while(1);
 
     // Print Orderbook
-    cout<<"Orderbook :"<<endl;
+    cout<<endl<<"Orderbook :"<<endl;
     cout<<"B : [ ";
     for(auto a: buyBook){
         cout<<to_string(a.qty)+"@"+to_string(a.price)+"#"+a.id<<", ";
