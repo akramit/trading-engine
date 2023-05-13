@@ -8,7 +8,7 @@ using namespace std;
 
 class order{
 
-    public: 
+    public:
     string id;
     int price;
     int qty;
@@ -198,5 +198,17 @@ int main(){
         }
     }while(1);
 
+    // Print Orderbook
+    cout<<"Orderbook :"<<endl;
+    cout<<"B : [ ";
+    for(auto a: buyBook){
+        cout<<to_string(a.qty)+"@"+to_string(a.price)+"#"+a.id<<", ";
+    }
+    cout<<" ]"<<endl;
+    cout<<"S : [ ";
+    for(auto a: sellBook){
+        cout<<to_string(a.qty)+"@"+to_string(a.price)+"#"+a.id<<", ";
+    }
+    cout<<" ]"<<endl;
     return 0;    
 }
