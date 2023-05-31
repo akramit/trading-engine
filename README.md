@@ -12,7 +12,7 @@ There are two kind of orders -
 # Test Case
 1. There are orders submitted - "SUB LO B price qty" or "SUB MO B qty"
 2. It also supports "CXL orderId" which cancels the order i.e. remove from the order book.
-2. Sellers/Buyers are mathced and orders are executed. Remaining amount of order in case of Limit Order are added to the Buy/Sell Book and in case of Market Order are cancelled. 
+2. Sellers/Buyers are matched and orders are executed. Remaining amount of order in case of Limit Order are added to the Buy/Sell Book and in case of Market Order are cancelled. 
 3. Return the total value transacted.
 4. Finally, output the final Buy Book and Sell Book.
 
